@@ -6,16 +6,11 @@ import tkinter, tkinter.scrolledtext
 import threading
 import os
 import sys
-import urllib.request
 import glob
 import time
 import hashlib
 import socket
 import subprocess
-# self-made
-#import quarantaene
-#import SystemFileScanner
-
 os_name = sys.platform
 verzeichnisse = []
 files = []
@@ -67,15 +62,9 @@ else:
 
 files_len = counter = 0
 main = None
-update_button = None
 scan_button = None
 fullscan_button = None
 quit_button = None
-b_delete = None
-b_delete_all = None
-b_restore = None
-b_restore_all = None
-b_add_file = None
 text_box = None
 e = None
 li = None
@@ -732,9 +721,6 @@ def gui_thread():
     breite = 20
 
     # Buttons
-    #update_button = tkinter.Button(main, bg=bgc, fg=fgc, text="Update",
-       #                            command=lambda: button_action_handler("update_button"), height=hoehe, width=breite)
-    #update_button.grid(row=0, column=0)
     scan_button = tkinter.Button(main, bg=bgc, fg=fgc, text="Scan",
                                  command=lambda: button_action_handler("scan_button"), height=hoehe, width=breite)
     scan_button.grid(row=1, column=0)
@@ -742,10 +728,6 @@ def gui_thread():
                                      command=lambda: button_action_handler("fullscan_button"), height=hoehe,
                                      width=breite)
     fullscan_button.grid(row=2, column=0)
-    #quarantine_button = tkinter.Button(main, bg=bgc, fg=fgc, text="Quarantine",
-                                       #command=lambda: button_action_handler("quarantine_button"), height=hoehe,
-                                     #  width=breite)
-    #quarantine_button.grid(row=3, column=0)
     quit_button = tkinter.Button(main, bg=bgc, fg=fgc, text="Close",
                                  command=lambda: button_action_handler("quit_button"), height=hoehe, width=breite)
     quit_button.grid(row=4, column=0, sticky="w")
@@ -793,5 +775,4 @@ t_main.start()
 time.sleep(1)
 t_clock.start()
 time.sleep(5)
-# print(t_main.isAlive())
 t_files.start()
